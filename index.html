@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday! ❤️</title>
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: linear-gradient(135deg, #91caeb, #f6fafd);
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+}
+h1 {
+    color: white;
+    text-align: center;
+    animation: fadeIn 2s ease;
+}
+p {
+    color: white;
+    text-align: center;
+    max-width: 500px;
+    padding: 0 20px;
+    font-size: 18px;
+    line-height: 1.5;
+}
+.cake {
+    position: relative;
+    margin-top: 30px;
+}
+.layer {
+    border-radius: 10px;
+    margin: auto;
+}
+.layer1 {
+    width: 220px;
+    height: 60px;
+    background: #5d72e7;
+}
+.layer2 {
+    width: 180px;
+    height: 50px;
+    background: #6985f3;
+}
+.layer3 {
+    width: 140px;
+    height: 40px;
+    background: #9aaefd;
+}
+.candles {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-bottom: 5px;
+}
+.candle {
+    width: 10px;
+    height: 40px;
+    background: white;
+    position: relative;
+    border-radius: 3px;
+}
+.flame {
+    width: 12px;
+    height: 18px;
+    background: gold;
+    border-radius: 50%;
+    position: absolute;
+    top: -18px;
+    left: -1px;
+    animation: flicker .6s infinite alternate;
+}
+@keyframes flicker {
+    from { transform: scale(1); }
+    to { transform: scale(1.2); }
+}
+.hearts {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+}
+.heart {
+    position: absolute;
+    color: rgb(230, 31, 31);
+    font-size: 20px;
+    animation: float 6s linear infinite;
+    bottom: -50px;
+}
+@keyframes float {
+    from {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(-110vh);
+        opacity: 0;
+    }
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 16px;
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
+}
+button:active {
+    transform: scale(0.95);
+}
+</style>
+</head>
+<body>
+
+<div class="hearts" id="hearts"></div>
+
+<h1>Dogum gunun mubarek, Sevgilimm ❤️</h1>
+<p id="message">
+    Birlikde nece-nece dogum gunlerimize girek insallah, seni bissuru sevirem, cox yasa askimm.<br>
+    Opuldunnn ❤️ (dilek tut sonra ufurr)
+</p>
+
+<div class="cake">
+    <div class="candles">
+        <div class="candle"><div class="flame"></div></div>
+        <div class="candle"><div class="flame"></div></div>
+        <div class="candle"><div class="flame"></div></div>
+    </div>
+    <div class="layer layer3"></div>
+    <div class="layer layer2"></div>
+    <div class="layer layer1"></div>
+</div>
+
+<button onclick="blowCandles()">Samları ufurr!</button>
+
+<script>
+function blowCandles(){
+    document.querySelectorAll('.flame').forEach(f => {
+        f.style.display = 'none';
+    });
+    document.getElementById("message").innerHTML = 
+    "Bilirem hemise menimle olmagi diledin ;D. Ureyinden kecen hersey tezlikle heyata kecsin insallahh ❤️";
+}
+
+function createHeart(){
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (Math.random() * 20 + 15) + "px";
+    document.getElementById("hearts").appendChild(heart);
+    
+    setTimeout(() => {
+        heart.remove();
+    }, 6000);
+}
+
+setInterval(createHeart, 500);
+</script>
+
+</body>
+</html>
